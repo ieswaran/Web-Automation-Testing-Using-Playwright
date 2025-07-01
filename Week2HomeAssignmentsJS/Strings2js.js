@@ -34,7 +34,10 @@ function isAnagram(s, t) {
     // Create a frequency map for characters in s
     const charCount = {};
     
-    for (let char of s) {
+    for (let char of s) {// Count each character in s
+        if (typeof char !== 'string') {
+            throw new Error("Input must be a string");
+        }
         charCount[char] = (charCount[char] || 0) + 1;
     }
     
