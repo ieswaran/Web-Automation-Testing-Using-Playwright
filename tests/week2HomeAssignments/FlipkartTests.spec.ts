@@ -9,7 +9,7 @@ test.describe("Red Bus and Flipkart Navigation Tests", () => {
 
     // Navigate to Red Bus
     await edgePage.goto("https://www.redbus.in");
-//
+
     // Get and print page title and URL
     const redBusTitle = await edgePage.title();
     const redBusUrl = await edgePage.url();
