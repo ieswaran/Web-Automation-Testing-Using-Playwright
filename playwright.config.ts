@@ -34,15 +34,34 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { testDir: './tests',
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+    // { testDir: './tests',
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { ...devices['Desktop Firefox'],
+        launchOptions: {
+       args: ['--kiosk'],  
+      }
     },
+    },
+    {
+      name: 'chrome',
+      use: { 
+        browserName: 'chromium', 
+        //channel: 'chrome', 
+        headless: false,
+        viewport: null,
+        launchOptions: {
+          slowMo: 1000, // Slow down operations for debugging
+          args: ['--start-maximized'], // Start Chrome in maximized mode
+        },
+      },
+    },
+
+
 
     // {
     //   name: 'webkit',
@@ -60,10 +79,10 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
     // {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
