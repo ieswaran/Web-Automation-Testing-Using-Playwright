@@ -22,12 +22,12 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html',{open:'always'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-    headless: true, // Run tests in headless mode
+    headless: false, // Run tests in headless mode
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -39,29 +39,14 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'] },
     // },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'],
-        launchOptions: {
-       args: ['--kiosk'],  
+  {name: 'chromium',
+      use: { browserName:'chromium',channel:'chrome',
+        viewport:null,
+        launchOptions:{
+         args:['--start-maximized']
+       }
       }
     },
-    },
-    {
-      name: 'chrome',
-      use: { 
-        browserName: 'chromium', 
-        //channel: 'chrome', 
-        headless: false,
-        viewport: null,
-        launchOptions: {
-          slowMo: 1000, // Slow down operations for debugging
-          args: ['--start-maximized'], // Start Chrome in maximized mode
-        },
-      },
-    },
-
-
 
     // {
     //   name: 'webkit',
