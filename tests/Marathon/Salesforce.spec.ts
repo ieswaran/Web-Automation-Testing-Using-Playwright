@@ -28,11 +28,27 @@ test.describe('Salesforce', () => {
     await page.locator("//div[@title='New']").click();
     await page.waitForTimeout(2000); // Wait for the New Case modal to load
     
-    await page.locator("//button[@aria-label='Status']").click();
+    await page.locator("//button[@aria-label='Case Origin']").click();
     await page.waitForTimeout(2000); // Wait for the status dropdown to load
-    
+    await page.locator("//div[@aria-label='Case Origin']//span[text()='Phone']").click();    
+    await page.waitForTimeout(3000); // Wait for the status to be selected
+    await page.locator("//input[@placeholder='Search Contacts...']").click();
+    await page.waitForTimeout(2000); // Wait for the search input to be ready
+    await page.locator("//span[text()='New Contact']").click();
+    await page.waitForTimeout(2000); // Wait for the New Contact modal to load
 
+     // Wait for the salutation dropdown to load    
+     // Wait for the salutation to be selected
+    await page.locator("//input[@placeholder='First Name']").fill('Ananth');
+    await page.locator("//input[@placeholder='Last Name']").fill('Eswaran');
+    await page.waitForTimeout(5000);
     
-    });
+    await page.locator("//button[@aria-label='Salutation']").click();
+    await page.waitForTimeout(2000);    
+    await page.locator("//span[text()='Mr.']").click();
+    await page.waitForTimeout(5000)
+    await page.locator("//button[@aria-label='Save']").click();
+    await page.waitForTimeout(2000); // Wait for the contact to be saved
+    }); 
 
 });
