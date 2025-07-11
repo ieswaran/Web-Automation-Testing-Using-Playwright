@@ -30,6 +30,10 @@ export default defineConfig({
     headless: false, // Run tests in headless mode
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    /* Screenshot configuration */
+    screenshot: 'on', // Options: 'on', 'off', 'only-on-failure'
+    /* Video recording configuration */
+    video: 'on', // Options: 'on', 'off', 'retain-on-failure', 'on-first-retry'
   },
 
   /* Configure projects for major browsers */
@@ -39,12 +43,18 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'] },
     // },
 
-  {name: 'chromium',
-      use: { browserName:'chromium',channel:'chrome',
+    {
+      name: 'chromium',
+      use: { 
+        browserName:'chromium',
+        channel:'chrome',
         viewport:null,
         launchOptions:{
-         args:['--start-maximized']
-       }
+          args:['--start-maximized']
+        },
+        /* You can also override screenshot/video settings per project */
+        // screenshot: 'on', // Uncomment to take screenshots for every test in this project
+        // video: 'on', // Uncomment to record video for every test in this project
       }
     },
 
