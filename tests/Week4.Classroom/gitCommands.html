@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Commands </title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #24292e;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .profile-pic {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+    section {
+      padding: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #0366d6;
+      margin-top: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background: #eaeaea;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: #f1f1f1;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Git Commands</h1>
+  </header>
+  <section>
+    <h2>1. Setup & Initialization</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>Initialize a local Git repo</td><td><code>git init</code></td></tr>
+      <tr><td>Clone a remote repository</td><td><code>git clone &lt;repo-url&gt;</code></td></tr>
+      <tr><td>Check repo status</td><td><code>git status</code></td></tr>
+      <tr><td>Set user config (global)</td><td><code>git config --global user.name "Your Name"</code><br><code>git config --global user.email "you@email.com"</code></td></tr>
+    </table>
+
+    <h2>2. Branching & Navigation</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>View all branches</td><td><code>git branch</code></td></tr>
+      <tr><td>Create a new branch</td><td><code>git checkout -b feature/branch-name</code></td></tr>
+      <tr><td>Switch to a branch</td><td><code>git checkout branch-name</code></td></tr>
+      <tr><td>Delete a local branch</td><td><code>git branch -d branch-name</code></td></tr>
+      <tr><td>Fetch remote branches</td><td><code>git fetch</code></td></tr>
+      <tr><td>Track a remote branch</td><td><code>git checkout -t origin/branch-name</code></td></tr>
+    </table>
+
+    <h2>3. Stage, Commit, and Push</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>Stage specific file(s)</td><td><code>git add filename.ext</code></td></tr>
+      <tr><td>Stage all changes</td><td><code>git add .</code></td></tr>
+      <tr><td>Commit staged changes</td><td><code>git commit -m "Descriptive message"</code></td></tr>
+      <tr><td>Push current branch to remote</td><td><code>git push origin branch-name</code></td></tr>
+    </table>
+
+    <h2>4. Pulling and Merging</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>Pull latest changes</td><td><code>git pull origin branch-name</code></td></tr>
+      <tr><td>Merge another branch into current</td><td><code>git merge branch-name</code></td></tr>
+      <tr><td>Abort a merge conflict</td><td><code>git merge --abort</code></td></tr>
+    </table>
+
+    <h2>5. Stashing (Temporary Save)</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>Save changes temporarily</td><td><code>git stash</code></td></tr>
+      <tr><td>View stash list</td><td><code>git stash list</code></td></tr>
+      <tr><td>Reapply last stashed changes</td><td><code>git stash apply</code></td></tr>
+      <tr><td>Drop a specific stash</td><td><code>git stash drop stash@{n}</code></td></tr>
+    </table>
+
+    <h2>6. Conflict Resolution</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>See conflicting files</td><td><code>git status</code></td></tr>
+      <tr><td>Fix conflicts manually</td><td><em>(Open files in editor)</em></td></tr>
+      <tr><td>Mark as resolved</td><td><code>git add conflict-file.ext</code></td></tr>
+      <tr><td>Commit after fixing conflicts</td><td><code>git commit</code></td></tr>
+    </table>
+
+    <h2>7. Cleaning & Resetting</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>Discard local changes in a file</td><td><code>git checkout -- file.ext</code></td></tr>
+      <tr><td>Reset working directory</td><td><code>git reset --hard</code></td></tr>
+      <tr><td>Remove untracked files</td><td><code>git clean -fd</code></td></tr>
+    </table>
+
+    <h2>8. Inspecting Repo History</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>View commit history</td><td><code>git log</code></td></tr>
+      <tr><td>One-line commit log</td><td><code>git log --oneline</code></td></tr>
+      <tr><td>Show specific commit</td><td><code>git show &lt;commit-hash&gt;</code></td></tr>
+      <tr><td>Compare branches</td><td><code>git diff branch1..branch2</code></td></tr>
+    </table>
+
+    <h2>9. Remote Repo Management</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>Add remote repo</td><td><code>git remote add origin &lt;repo-url&gt;</code></td></tr>
+      <tr><td>View remotes</td><td><code>git remote -v</code></td></tr>
+      <tr><td>Rename remote</td><td><code>git remote rename origin upstream</code></td></tr>
+    </table>
+
+    <h2>10. Tagging Releases</h2>
+    <table>
+      <tr><th>Purpose</th><th>Command</th></tr>
+      <tr><td>Create a tag</td><td><code>git tag v1.0.0</code></td></tr>
+      <tr><td>Push tags to remote</td><td><code>git push origin --tags</code></td></tr>
+    </table>
+
+    <h2>Best Practices</h2>
+    <ul>
+      <li>Always pull before pushing: <code>git pull origin &lt;branch&gt;</code></li>
+      <li>Write meaningful commit messages</li>
+      <li>Use feature branches for isolation</li>
+      <li>Use <code>.gitignore</code> to exclude unnecessary files</li>
+    </ul>
+  </section>
+  <div class="footer">
+    Made with ❤️ by Eswaran Anantharaman
+  </div>
+</body>
+</html>
