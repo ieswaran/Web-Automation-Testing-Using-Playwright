@@ -45,7 +45,7 @@ test.describe('Salesforce', () => {
     
     await page.locator("//button[@aria-label='Salutation']").click();
     await page.waitForTimeout(2000);    
-    await page.locator("//span[text()='Mr.']").click();
+    await page.locator("//lightning-base-combobox-item//span[text()='Mr.']").click();
     await page.waitForTimeout(5000)
     await page.locator("//button[@aria-label='Save']").click();
     await page.waitForTimeout(2000); // Wait for the contact to be saved
