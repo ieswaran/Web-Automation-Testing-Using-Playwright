@@ -24,4 +24,5 @@ test("Create Lead in Salesforce", async ({page})=>{
 
     await page.locator("//button[text()='View All']").click();
     await page.waitForTimeout(2000); // Wait for the app launcher to load
+    
 })
