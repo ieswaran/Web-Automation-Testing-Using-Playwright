@@ -13,6 +13,10 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  timeout:60000,
+  expect: {
+    timeout: 50000,
+  },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -22,32 +26,47 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html',{open:'always'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    actionTimeout: 15000,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-
+    headless: true, // Run tests in headless mode
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    /* Screenshot configuration */
+    screenshot: 'on', // Options: 'on', 'off', 'only-on-failure'
+    /* Video recording configuration */
+    video: 'on', // Options: 'on', 'off', 'retain-on-failure', 'on-first-retry'
   },
 
   /* Configure projects for major browsers */
   projects: [
+    // { testDir: './tests',
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
+
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        browserName:'chromium',
+        channel:'chrome',
+        viewport:null,
+        launchOptions:{
+          args:['--start-maximized']
+        },
+        /* You can also override screenshot/video settings per project */
+        // screenshot: 'on', // Uncomment to take screenshots for every test in this project
+        // video: 'on', // Uncomment to record video for every test in this project
+      }
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
