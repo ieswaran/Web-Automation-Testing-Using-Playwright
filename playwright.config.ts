@@ -32,7 +32,7 @@ export default defineConfig({
     actionTimeout: 15000,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-    headless: false, // Run tests in headless mode
+    headless: true, // Run tests in headless mode
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     /* Screenshot configuration */
