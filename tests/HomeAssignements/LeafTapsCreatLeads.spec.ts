@@ -18,7 +18,6 @@
 17. Verify the company name, first name, last name and the status using auto retrying and nonretrying assertions */
 
 import {test, expect} from '@playwright/test'
-
 test('Create Lead on Leaftaps', async ({page})=>{
 
     await page.goto('http://leaftaps.com/opentaps/control/main');
@@ -50,5 +49,7 @@ test('Create Lead on Leaftaps', async ({page})=>{
     await expect(page.locator("//span[@id='viewLead_annualRevenue_sp']")).toContainText('1,000,000')
     await expect(page.locator("//span[@id='viewLead_departmentName_sp']")).toContainText('Finance')
     await expect(page.locator("//span[@id='viewLead_primaryPhoneNumber_sp']")).toContainText('1234567890')  
+
+    await page.close();
 
 })
